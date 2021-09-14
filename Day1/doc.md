@@ -27,3 +27,10 @@ According to the detail study on dataset and requirements provided by the client
 *	role – Dimension table for fact_employee
 *	time period – Dimension table for fact_timesheet
 ![as](a.png)
+
+From above logical model, data related to the business requirement of the client can be made. Looking at punch_apply_date and attendance the client can find out whether the employee was working on a particular day or not. If they had attendance that day, to know the start and leave time punch_in_time and punch_out_time is there. Also, hours_worked to find out how many hours they worked. The dimension table shift_type helps to find out which shift the employee worked on. Aslo, the period table can be used to find the data on biweekly basis. The num_teammates_absent and hours_worked will help to overlook any employee has to cover for other employees regularly. Similarly, department and salary of employee can also be known.
+
+# Physical Model
+![as](b.png)
+
+The above datatypes were chosen on the basis of type of data provided in the timesheet and employee dataset. Like, punch_in_time data had date and timestamp so datetime datatype was chosen whereas punch_apply_date contains only date. 
