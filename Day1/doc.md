@@ -1,6 +1,6 @@
 # ETL
 
-# Logical Model for Data Warehouse
+# Logical Model for Data Warehouses
 
 ## Business Requirements
 The business comes under health sector domain. The requirement of the business is given below:
