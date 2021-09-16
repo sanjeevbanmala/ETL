@@ -11,11 +11,7 @@ def extract_employee_data(filePath):
     con.commit()
     for i in data:
         columns= ', '.join(str(x).replace('/', '_') for x in i.keys())
-        #new = ",sheet_name"
-        #columns= columns + new
         values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in i.values())
-        #new1=",'"+str(filePath)+"'"
-        #values= values + new1
         sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('raw_employee', columns, values)
         cur.execute(sql)
         con.commit()
