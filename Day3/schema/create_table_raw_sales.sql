@@ -11,3 +11,4 @@ CREATE TABLE raw_sales(
     remaining_quantity VARCHAR(500), 
     sales_date VARCHAR(500)
     );
+
