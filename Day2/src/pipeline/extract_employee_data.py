@@ -6,41 +6,40 @@ def extract_employee_data(filePath):
     cur = con.cursor()
     f = open(filePath,)
     data = json.load(f)
-    
+    delete_employee="delete from raw_employee"
+    cur.execute(delete_employee)
+    con.commit()
     for i in data:
         columns= ', '.join(str(x).replace('/', '_') for x in i.keys())
+        #new = ",sheet_name"
+        #columns= columns + new
         values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in i.values())
-        sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('employee', columns, values)
+        #new1=",'"+str(filePath)+"'"
+        #values= values + new1
+        sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('raw_employee', columns, values)
         cur.execute(sql)
         con.commit()
+    search_sheet = "select employee_id from raw_employee_archive where sheet_name = '" + filePath +"'"
+    cur.execute(search_sheet)
+    if(cur.fetchall()):
+        print("Archive already created")
+    else:
+        for i in data:
+            columns= ', '.join(str(x).replace('/', '_') for x in i.keys())
+            new = ",sheet_name"
+            columns= columns + new
+            values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in i.values())
+            new1=",'"+str(filePath)+"'"
+            values= values + new1
+            sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('raw_employee_archive', columns, values)
+            cur.execute(sql)
+            con.commit()
+        print("New archive created")
         
     cur.close()
     con.close()
 # Closing file
     f.close()
- 
-# returns JSON object as
-# a dictionary
-   
- 
-# Iterating through the json
-# list
-
-
-    #with open(filePath, 'r') as file:
-        #i = 0
-        #for line in file:
-           # if i == 0:
-               # i += 1
-                #continue
-           # row = line.values().split(",")
-           # sql= """INSERT INTO employee(employee_id,first_name,last_name,department_id,department_name,manager_employee_id,employee_role,salary,hire_date,terminated_date,terminated_reason,dob,fte,location)
-            #VALUES(%s,%s, %s, %s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s)"""
-            #cur.execute(sql, row)
-            #con.commit()
-            #i +=1 
-    #cur.close()
-    #con.close()
 
 
 if __name__ == "__main__":
