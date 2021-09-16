@@ -59,4 +59,4 @@ if __name__ == "__main__":
     extract_timesheet_data("../../data/timesheet_2021_05_23.csv")
     extract_timesheet_data("../../data/timesheet_2021_07_24.csv")
 ```
-Finally, data was extracted in raw_timesheet table
+Finally, data was extracted in raw_timesheet table in databse.
