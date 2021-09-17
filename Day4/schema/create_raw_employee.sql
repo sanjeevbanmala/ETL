@@ -13,4 +13,5 @@ CREATE TABLE raw_employee(
     dob VARCHAR(500), 
     fte VARCHAR(500), 
     location VARCHAR(500)
+    
 );

@@ -6,4 +6,5 @@ CREATE TABLE raw_timesheet(
 	punch_apply_date VARCHAR(500),
 	hours_worked VARCHAR(500),
 	paycode VARCHAR(500)
+	
 );
