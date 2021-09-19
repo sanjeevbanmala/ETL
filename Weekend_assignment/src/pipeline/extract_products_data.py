@@ -1,9 +1,4 @@
-from connection import connect
-
-
-def extract_products_data(filePath):
-    con = connect()
-    cur = con.cursor()
+def extract_products_data(cur,con,filePath):
     delete_sql = """DELETE FROM raw_products"""
     cur.execute(delete_sql)
     con.commit()
@@ -40,6 +35,3 @@ def extract_products_data(filePath):
                 con.commit()
                 i += 1
         print("New archive created for product data!!!!")
-
-    cur.close()
-    con.close()

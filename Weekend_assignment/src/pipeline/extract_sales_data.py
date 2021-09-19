@@ -1,7 +1,7 @@
 from connection import connect
 
 
-def extract_sales_data(filePath):
+def extract_sales_data(cur,con,filePath):
     con = connect()
     cur = con.cursor()
     delete_sql = """DELETE FROM raw_sales"""
@@ -39,6 +39,3 @@ def extract_sales_data(filePath):
                 con.commit()
                 i += 1
         print("New archive created for sales data!!!!")
-
-    cur.close()
-    con.close()
