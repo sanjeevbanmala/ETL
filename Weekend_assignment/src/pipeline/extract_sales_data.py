@@ -1,5 +1,6 @@
 from connection import connect
 
+
 def extract_sales_data(filePath):
     con = connect()
     cur = con.cursor()
@@ -22,7 +23,7 @@ def extract_sales_data(filePath):
     search_sheet = "select id from raw_sales_archive where sheet_name = '" + filePath + "'"
     cur.execute(search_sheet)
     if(cur.fetchall()):
-        print("archive already exists!!!")
+        print("archive already exists for sales!!!")
     else:
         with open(filePath, 'r') as file:
             i = 0
@@ -41,7 +42,3 @@ def extract_sales_data(filePath):
 
     cur.close()
     con.close()
-
-
-if __name__ == "__main__":
-    extract_sales_data("../../data/sales_dump.csv")
