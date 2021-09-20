@@ -470,18 +470,18 @@ Tableau is a powerful and fastest growing data visualization tool used in the Bu
 
 Connecting to postgres database using Tableau
 
-![as](c.png)
+![as](c.PNG)
 
 Mapping fact and dimension tables in Tableau
 
-![as](m.png)
+![as](m.PNG)
 
 Visualizing data on the basis of sales and category
 
-![as](v1.png)
+![as](v1.PNG)
 
 Visualizing data on the basis of sales and category and brand
 
-![as](v2.png)
+![as](v2.PNG)
 
 
