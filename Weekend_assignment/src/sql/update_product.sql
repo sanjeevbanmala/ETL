@@ -8,7 +8,7 @@ where active='N';
 
 TRUNCATE TABLE category RESTART IDENTITY;
 INSERT INTO category(category)
-SELECT DISTINCT category from raw_products_archive;
+SELECT DISTINCT INITCAP(category) from raw_products_archive;
 
 DELETE FROM products;
 INSERT INTO products
@@ -30,4 +30,5 @@ CAST(p.created_date AS TIMESTAMP),
 p.updated_by,
 CAST(p.updated_date AS TIMESTAMP)
 FROM raw_products_archive p
-INNER JOIN category c on c.category = p.category;
+INNER JOIN category c on c.category = INITCAP(p.category);
+
