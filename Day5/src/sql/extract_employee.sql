@@ -1,29 +1,29 @@
 DROP TABLE IF EXISTS employee;
-CREATE TABLE employee as
+CREATE TABLE employee AS
 SELECT 
- employee_id as client_employee_id,
- INITCAP(first_name) as first_name,
- INITCAP(last_name) as last_name,
- d.department_id as department_id,
- (CASE WHEN manager_employee_id ='-' THEN NULL ELSE manager_employee_id END ) as manager_employee_id,
+ employee_id AS client_employee_id,
+ INITCAP(first_name) AS first_name,
+ INITCAP(last_name) AS last_name,
+ d.department_id AS department_id,
+ (CASE WHEN manager_employee_id ='-' THEN NULL ELSE manager_employee_id END ) AS manager_employee_id,
  salary,
- CAST(hire_date as DATE),
- CAST(CASE WHEN terminated_date='01-01-1700' THEN NULL ELSE terminated_date END as date) as terminated_date,
+ CAST(hire_date AS DATE),
+ CAST(CASE WHEN terminated_date='01-01-1700' THEN NULL ELSE terminated_date END AS date) AS terminated_date,
  terminated_reason,
- CAST(dob as DATE) as dob,
- CAST(fte as FLOAT) as fte,
- CAST(fte as FLOAT) * 40 as weekly_hours,
- (CASE WHEN employee_role LIKE '%MGR%' or employee_role LIKE '%Supv%' THEN 'Manager' ELSE 'Employee' END) as employee_role
+ CAST(dob AS DATE) As dob,
+ CAST(fte AS FLOAT) As fte,
+ CAST(fte AS FLOAT) * 40 as weekly_hours,
+ (CASE WHEN employee_role LIKE '%MGR%' or employee_role LIKE '%Supv%' THEN 'Manager' ELSE 'Employee' END) AS employee_role
  from raw_employee
- join dim_department d on raw_employee.department_id=d.department_id;
+ join dim_department d ON raw_employee.department_id=d.department_id;
 
 DROP TABLE IF EXISTS manager;
 
-create table manager as
-select distinct
+CREATE TABLE manager AS
+SELECT DISTINCT
  m.client_employee_id,
  m.first_name,
  m.last_name
-from employee m
+FROM employee m
 INNER JOIN employee e
-on e.manager_employee_id= m.client_employee_id;
+ON e.manager_employee_id= m.client_employee_id;

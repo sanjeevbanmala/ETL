@@ -28,6 +28,6 @@ SELECT
    e.fte,
    e.weekly_hours,
    r.id,
-   CASE WHEN e.terminated_date IS NULL THEN 1 ELSE 2 END as active_status_id
+   CASE WHEN e.terminated_date IS NULL THEN 1 ELSE 2 END AS active_status_id
 FROM employee e
 INNER JOIN dim_role r ON r.name=e.employee_role;
