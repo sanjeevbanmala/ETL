@@ -1,4 +1,4 @@
-CREATE TABLE fact_product(
+CREATE TABLE dim_product(
 	product_id VARCHAR(200),
 	product_name VARCHAR(200),
 	description VARCHAR(200),

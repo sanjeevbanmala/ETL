@@ -1,4 +1,4 @@
-CREATE TABLE fact_date(
+CREATE TABLE dim_date(
 	id SERIAL,
 	date date,
 	year VARCHAR(4),
