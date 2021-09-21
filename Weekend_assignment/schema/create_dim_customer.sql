@@ -1,4 +1,4 @@
-CREATE TABLE fact_customer(
+CREATE TABLE dim_customer(
 	customer_id VARCHAR(200),
 	user_name VARCHAR(200),
 	first_name VARCHAR(200),
