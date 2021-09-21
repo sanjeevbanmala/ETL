@@ -2,7 +2,7 @@ UPDATE raw_sales_archive
 SET bill_date='2017-02-28 11:00:00'
 WHERE bill_date='2017-02-30 11:00:00';
 
-TRUNCATE TABLE date RESTART IDENTITY;;
+TRUNCATE TABLE date RESTART IDENTITY;
 INSERT INTO date(bill_date,date,year,time,month,day)
 SELECT DISTINCT bill_date, 
 CAST(bill_date as DATE) as date,
